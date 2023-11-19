@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /client/node_modules
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
@@ -22,3 +23,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+=======
+/node_modules
+.env
+>>>>>>> 987664e49757a29d3826e9b7eb1e9665ce19d031
