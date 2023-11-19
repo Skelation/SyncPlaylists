@@ -27,11 +27,26 @@
     </header>
 
     <div class="auth-container">
-        <button id="signInButton">Create Account / Sign In</button>
+        <button id="signInButton">Continue with Google</button>
         <button id="signOutButton">Sign Out</button>
 
         <div id="message">
-            <p>You have signed in as <span id="userName"></span> with the email <span id="userEmail"></span> </p>
+            <p>Logged in as <span id="userName"></span> with the email <span id="userEmail"></span> </p>
+        </div>
+    </div>
+        <!-- Add a form for setting the username -->
+        <form id="usernameForm">
+            <label for="usernameInput">Set Username:</label>
+            <input type="text" id="usernameInput" placeholder="Enter your username" />
+            <button type="submit">Set Username</button>
+        </form>
+
+        <!-- ACCOUNT MODAL -->
+        <div id="modal-account" class="modal">
+            <div class="modal-content center-align">
+                <h4>Account details</h4><br />
+                <div class="account-details"></div>
+            </div>
         </div>
     </div>
 
@@ -84,19 +99,20 @@
   }
 
   const userSignOut = async() => {
-    signOut(auth).then(() => {
-        alert("You have signed out successfully!");
-    }).catch((error) => {})
+    signOut(auth)
+    .catch((error) => {})
   }
 
   onAuthStateChanged(auth, (user) => {
     if(user) {
       signOutButton.style.display = "block";
       message.style.display = "block";
+      signInButton.style.display = "none"
       userName.innerHTML = user.displayName;
       userEmail.innerHTML = user.email
     } else {
       signOutButton.style.display = "none";
+      signInButton.style.display = "block"
       message.style.display = "none";
     }
   })
@@ -104,7 +120,24 @@
   signInButton.addEventListener('click', userSignIn);
   signOutButton.addEventListener('click', userSignOut);
 
+  const usernameForm = document.getElementById("usernameForm");
+        const usernameInput = document.getElementById("usernameInput");
 
+        usernameForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const newUsername = usernameInput.value;
+
+            // Perform logic to update the username in your application
+            // For example, you can store it in Firebase or any other database
+
+            // Update the displayed username in the navbar
+            userName.innerHTML = newUsername;
+            // You can also store the username in your database for future use
+            // ...
+
+            // Clear the input field
+            usernameInput.value = "";
+        });
 
     </script>
 </body>
