@@ -122,15 +122,25 @@
       signOutButton.style.display = "block";
       message.style.display = "block";
       signInButton.style.display = "none";
+
+      const db = getDatabase();
+      const userRef = ref(db, 'users/' + user.uid);
       // Update the content of the "userName" span
-      userName.innerHTML = user.displayName;
-      userEmail.innerHTML = user.email;
-    } else {
-      signOutButton.style.display = "none";
-      signInButton.style.display = "block";
-      message.style.display = "none";
-    }
-  });
+      onValue(userRef, (snapshot) => {
+      const userData = snapshot.val();
+      if (userData) {
+        // Update the content of the "userName" span
+        userName.innerHTML = userData.username;
+        }
+        });
+
+        userEmail.innerHTML = user.email;
+        } else {
+        signOutButton.style.display = "none";
+        signInButton.style.display = "block";
+        message.style.display = "none";
+        }
+      });
 
       signInButton.addEventListener("click", userSignIn);
       signOutButton.addEventListener("click", userSignOut);
