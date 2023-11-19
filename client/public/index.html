@@ -4,32 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/client/public/styles.css">
     <title>SyncPlaylists</title>
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <title>SyncPlaylists</title>
-    <script src="https://accounts.google.com/gsi/client" onload="console.log('GSI Client Loaded')" async defer></script>
-    <script>
-      function OnSuccess(googleUser) {
-        // This function will be called when the user successfully signs in
-        console.log('Google sign-in successful');
-    
-        // You can access user information using the googleUser object
-        var profile = googleUser.getBasicProfile();
-        console.log('ID: ' + profile.getId());
-        console.log('Name: ' + profile.getName());
-        console.log('Email: ' + profile.getEmail());
-    
-        // Add your custom logic here, for example, redirect to a different page
-        window.location.href = "/client/public/html/your-redirect-page.html";
-      }
-    </script>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
         <header>
             <div>
@@ -44,20 +22,6 @@
                     <li><a href="/client/public/html/my-account.html">My Account</a></li>
                 </ul>
             </nav>
-            <div id="g_id_onload"
-              data-client_id="877648253534-lll7jmdkvju12gjim86hg18e2fbbm7f9.apps.googleusercontent.com"
-              data-login_uri="https://d912-2a02-a03f-6af0-8400-710b-d595-84d6-de9.ngrok-free.app/handleAuth"
-              data-auto_prompt="false">
-            </div>
-            <div class="g_id_signin"
-              data-type="standard"
-              data-size="large"
-              data-theme="outline"
-              data-text="sign_in_with"
-              data-shape="rectangular"
-              data-callback="OnSuccess"
-              data-logo_alignment="left">
-            </div>
         </header>
         
         <main>
