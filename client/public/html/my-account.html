@@ -1,147 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <link rel="stylesheet" href="/client/public/styles.css">
+    <link rel="stylesheet" href="/client/public/styles.css" />
     <title>SyncPlaylists</title>
-    <!-- Add Google login button here -->
-</head>
-
-<body>
+    <!-- Add your JavaScript link here -->
+  </head>
+  <body>
     <header>
-        <div>
-            <a style="text-decoration: none;" href="/client/public/index.html">
-                <h1 id="app-title">SyncPlaylists</h1>
-            </a>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="/client/public/html/playlist.html">Your Playlists</a></li>
-                <li><a href="/client/public/html/create-playlist.html">Create a Playlist</a></li>
-                <li><a href="/client/public/html/my-account.html">My Account</a></li>
-            </ul>
-        </nav>
+      <div>
+        <a style="text-decoration: none" href="/client/public/index.html">
+          <h1 id="app-title">SyncPlaylists</h1>
+        </a>
+      </div>
+      <nav>
+        <ul>
+          <li>
+            <a href="/client/public/html/playlist.html">Your Playlists</a>
+          </li>
+          <li>
+            <a href="/client/public/html/create-playlist.html"
+              >Create a Playlist</a
+            >
+          </li>
+          <li id="myAccountLink">
+            <a href="/client/public/html/my-account.html">My Account</a>
+          </li>
+          <a href="/client/public/html/my-account.html"><span id="userNameNavbar"></span></a>
+        </ul>
+      </nav>
     </header>
 
-    <div class="auth-container">
+    <div class="flex-container">
+      <div class="flex-box" id="usernameBox">
+        <h3>Username Settings</h3>
+        <form id="usernameForm">
+          <label for="usernameInput">Set Username:</label>
+          <input
+            type="text"
+            id="usernameInput"
+            placeholder="Enter your username"
+          />
+          <button type="submit">Set Username</button>
+        </form>
+      </div>
+
+      <div class="flex-box" id="googleLoginBox">
         <button id="signInButton">Continue with Google</button>
         <button id="signOutButton">Sign Out</button>
-
         <div id="message">
-            <p>Logged in as <span id="userName"></span> with the email <span id="userEmail"></span> </p>
+          <p>
+            Logged in as <span id="userName"></span> with the email
+            <span id="userEmail"></span>
+          </p>
         </div>
+      </div>
     </div>
-        <!-- Add a form for setting the username -->
-        <form id="usernameForm">
-            <label for="usernameInput">Set Username:</label>
-            <input type="text" id="usernameInput" placeholder="Enter your username" />
-            <button type="submit">Set Username</button>
-        </form>
 
-        <!-- ACCOUNT MODAL -->
-        <div id="modal-account" class="modal">
-            <div class="modal-content center-align">
-                <h4>Account details</h4><br />
-                <div class="account-details"></div>
-            </div>
-        </div>
-    </div>
 
     <script type="module">
-  
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
- 
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
 
-  import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
-  
-  // Import the functions you need from the SDKs you need
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+      import {
+        getAuth,
+        GoogleAuthProvider,
+        signInWithPopup,
+        signOut,
+        onAuthStateChanged,
+      } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyBicVZNrzqiFPiWlFhbYYx0nTAU4zPwMTI",
-    authDomain: "syncplaylist.firebaseapp.com",
-    projectId: "syncplaylist",
-    storageBucket: "syncplaylist.appspot.com",
-    messagingSenderId: "877648253534",
-    appId: "1:877648253534:web:63474d0db24fb499091acf",
-    measurementId: "G-ZYWVRR5EWS"
-  };
+      // Import the functions you need from the SDKs you need
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
 
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth();
-  const provider = new GoogleAuthProvider()
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyBicVZNrzqiFPiWlFhbYYx0nTAU4zPwMTI",
+        authDomain: "syncplaylist.firebaseapp.com",
+        projectId: "syncplaylist",
+        storageBucket: "syncplaylist.appspot.com",
+        messagingSenderId: "877648253534",
+        appId: "1:877648253534:web:63474d0db24fb499091acf",
+        measurementId: "G-ZYWVRR5EWS",
+      };
 
-  const signInButton = document.getElementById("signInButton");
-  const signOutButton = document.getElementById("signOutButton");
-  const message = document.getElementById("message");
-  const userName = document.getElementById("userName");
-  const userEmail = document.getElementById("userEmail");
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth();
+      const provider = new GoogleAuthProvider();
 
-  signOutButton.style.display = "none";
-  message.style.display = "none";
+      const signInButton = document.getElementById("signInButton");
+      const signOutButton = document.getElementById("signOutButton");
+      const message = document.getElementById("message");
+      const userName = document.getElementById("userName");
+      const userEmail = document.getElementById("userEmail");
 
-  const userSignIn = async() => {
-    signInWithPopup(auth, provider)
-    .then((result) => {
-        const user = result.user
-        console.log(user);
-    }).catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message
-    })
-  }
-
-  const userSignOut = async() => {
-    signOut(auth)
-    .catch((error) => {})
-  }
-
-  onAuthStateChanged(auth, (user) => {
-    if(user) {
-      signOutButton.style.display = "block";
-      message.style.display = "block";
-      signInButton.style.display = "none"
-      userName.innerHTML = user.displayName;
-      userEmail.innerHTML = user.email
-    } else {
       signOutButton.style.display = "none";
-      signInButton.style.display = "block"
       message.style.display = "none";
-    }
-  })
 
-  signInButton.addEventListener('click', userSignIn);
-  signOutButton.addEventListener('click', userSignOut);
+      const userSignIn = async () => {
+        signInWithPopup(auth, provider)
+          .then((result) => {
+            const user = result.user;
+            console.log(user);
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+          });
+      };
 
-  const usernameForm = document.getElementById("usernameForm");
-        const usernameInput = document.getElementById("usernameInput");
+      const userSignOut = async () => {
+        signOut(auth).catch((error) => {});
+      };
 
-        usernameForm.addEventListener("submit", (e) => {
-            e.preventDefault();
-            const newUsername = usernameInput.value;
+      const myAccountLink = document.getElementById("myAccountLink");
+      const userNameNavbar = document.getElementById("userNameNavbar");
 
-            // Perform logic to update the username in your application
-            // For example, you can store it in Firebase or any other database
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          signOutButton.style.display = "block";
+          message.style.display = "block";
+          signInButton.style.display = "none";
+          myAccountLink.style.display = "none"; // Hide "My Account" link
+          userNameNavbar.style.display = "inline"; // Show username in the navbar
+          userNameNavbar.innerHTML = user.displayName;
+          userEmail.innerHTML = user.email;
+        } else {
+          signOutButton.style.display = "none";
+          signInButton.style.display = "block";
+          message.style.display = "none";
+          myAccountLink.style.display = "block"; // Show "My Account" link
+          userNameNavbar.style.display = "none"; // Hide username in the navbar
+        }
+      });
 
-            // Update the displayed username in the navbar
-            userName.innerHTML = newUsername;
-            // You can also store the username in your database for future use
-            // ...
+      signInButton.addEventListener("click", userSignIn);
+      signOutButton.addEventListener("click", userSignOut);
 
-            // Clear the input field
-            usernameInput.value = "";
-        });
+      const usernameForm = document.getElementById("usernameForm");
+      const usernameInput = document.getElementById("usernameInput");
 
+      usernameForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const newUsername = usernameInput.value;
+
+        // Perform logic to update the username in your application
+        // For example, you can store it in Firebase or any other database
+
+        // Update the displayed username in the navbar
+        userName.innerHTML = newUsername;
+        // You can also store the username in your database for future use
+        // ...
+
+        // Clear the input field
+        usernameInput.value = "";
+      });
     </script>
-</body>
-<footer>
+  </body>
+  <footer>
     <p>&copy; 2023 SyncPlaylists. All rights reserved.</p>
-</footer>
+  </footer>
 </html>
