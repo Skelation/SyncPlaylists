@@ -28,8 +28,6 @@
           <li id="myAccountLink">
             <a href="/client/public/html/my-account.html">My Account</a>
           </li>
-          <a href="/client/public/html/my-account.html"><span id="userNameNavbar"></span></a>
-        </ul>
       </nav>
     </header>
 
@@ -118,25 +116,21 @@
       };
 
       const myAccountLink = document.getElementById("myAccountLink");
-      const userNameNavbar = document.getElementById("userNameNavbar");
 
       onAuthStateChanged(auth, (user) => {
-        if (user) {
-          signOutButton.style.display = "block";
-          message.style.display = "block";
-          signInButton.style.display = "none";
-          myAccountLink.style.display = "none"; // Hide "My Account" link
-          userNameNavbar.style.display = "inline"; // Show username in the navbar
-          userNameNavbar.innerHTML = user.displayName;
-          userEmail.innerHTML = user.email;
-        } else {
-          signOutButton.style.display = "none";
-          signInButton.style.display = "block";
-          message.style.display = "none";
-          myAccountLink.style.display = "block"; // Show "My Account" link
-          userNameNavbar.style.display = "none"; // Hide username in the navbar
-        }
-      });
+    if (user) {
+      signOutButton.style.display = "block";
+      message.style.display = "block";
+      signInButton.style.display = "none";
+      // Update the content of the "userName" span
+      userName.innerHTML = user.displayName;
+      userEmail.innerHTML = user.email;
+    } else {
+      signOutButton.style.display = "none";
+      signInButton.style.display = "block";
+      message.style.display = "none";
+    }
+  });
 
       signInButton.addEventListener("click", userSignIn);
       signOutButton.addEventListener("click", userSignOut);
