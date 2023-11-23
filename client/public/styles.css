@@ -141,12 +141,12 @@ h3 {
     color: #000000;
     border-radius: 5px;
     cursor: pointer;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
     -webkit-transition-property: box-shadow, transform;
     transition-property: box-property, transform;
 }
 .btn:hover, .btn:hover, .btn:active{
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
 }
