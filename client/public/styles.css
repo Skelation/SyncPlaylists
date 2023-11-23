@@ -128,3 +128,23 @@ h2,
 h3 {
     color: #ffffff;
 }
+
+.btn{
+    font-family: "Poppins", sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    background: #1ED760;
+    width: 160px;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+}
+
+
+
