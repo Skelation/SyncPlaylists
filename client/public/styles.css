@@ -128,3 +128,32 @@ h2,
 h3 {
     color: #ffffff;
 }
+
+.btn{
+    font-family: "Circular", sans-serif;
+    font-size: 18px;
+    background: #ffffff;
+    font-weight: bold;
+    width: 160px;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #000000;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    -webkit-transition-property: box-shadow, transform;
+    transition-property: box-property, transform;
+}
+.btn:hover, .btn:hover, .btn:active{
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.oval-button {
+    border-radius: 50px; /* sets the border radius to half of its width to create an oval shape */
+    padding: 10px 20px; /* adjust padding as needed */
+  }
+
+
