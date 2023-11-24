@@ -130,7 +130,7 @@ h3 {
 }
 
 .btn{
-    font-family: "Circular", sans-serif;
+    font-family: 'Karla', sans-serif;
     font-size: 18px;
     background: #ffffff;
     font-weight: bold;
@@ -155,5 +155,3 @@ h3 {
     border-radius: 50px; /* sets the border radius to half of its width to create an oval shape */
     padding: 10px 20px; /* adjust padding as needed */
   }
-
-
