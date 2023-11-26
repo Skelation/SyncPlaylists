@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include ("partials/header") %>
+    <title>Login</title>
+  </head>
+  <body>
+    <%- include ("partials/nav") %>
+   <h1><%= user.name %>`s playlists</h1>
+
+   <% if(posts.length > 0){ %>
+    <% for(let i=0;i<posts.length;i++){ %>
+        <div class="playlist-card" style="width:18rem;">
+             <div class="playlist-card-body">
+              <h5 class="playlist-card-title"><%= posts[i].title %></h5>
+                  <p class="playlist-card-text"><%= posts[i].content %></p>
+              
+             </div>
+        </div>
+      <% } %>
+      <% } %>
+  </body>
+</html>

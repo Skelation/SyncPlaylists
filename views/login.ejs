@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include ("partials/header") %>
+    <title>Login</title>
+  </head>
+  <body>
+    <%- include ("partials/nav") %>
+    <main style="padding: 3rem">
+      <div class="row">
+        <div class="col-md-2">
+          <a
+            class="btn btn-lg btn-google"
+            style="
+              padding: 0.2rem 0.5rem;
+              background-color: rgb(7, 7, 7);
+              color: rgb(255, 255, 255);
+            "
+            href="/auth/google"
+            ><img
+              src="https://img.icons8.com/color/16/000000/google-logo.png"
+            />
+            Login with Google</a
+          >
+        </div>
+        <div class="col-md-2">
+          <a
+            class="btn btn-lg btn-google"
+            style="
+              padding: 0.1rem 0.5rem;
+              background-color: rgb(28, 181, 205);
+              color: rgb(255, 255, 255);
+              box-shadow: 0 0 2.5px black;
+              
+            "
+            href="/auth/github"
+            ><img
+              src="https://img.icons8.com/color/20/000000/github.png"
+            />
+            Login with GitHub</a
+          >
+        </div>
+       
+      </div> 
+      <br />
+      <h4>Or... you have an account. Login here:</h2>
+        <form  action="/auth/login" method="POST">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input
+            type="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="Enter email"
+            name="username"
+          />
+          <small id="emailHelp" class="form-text text-muted"
+            >We'll never share your email with anyone else.</small
+          >
+        </div>
+        <br />
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+            placeholder="Password"
+            name="password"
+          />
+        </div>
+        <br />
+        <button class="btn btn-primary">Submit</button>
+        <%- include ("partials/message") %>
+      </form>
+    </main>
+  </body>
+</html>

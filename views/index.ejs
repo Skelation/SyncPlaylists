@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include ("partials/header") %>
+    <title>Home</title>
+  </head>
+  <body>
+   <%- include ("partials/nav") %>
+    <div class=" bg-light rounded-3 vh-100">
+      <div class="container-fluid  d-flex  vh-100 row ">
+        <section class="right-side h-100 d-flex align-items-center col-sm col-md-6">
+          <div class="wrap h-50 px-5">
+        <h1 class="hello-display">
+          Hello <%= user.name %>
+        </h1>
+        <p class="project_description">
+          Create Playlists with your friends
+        </p>
+        </div>
+      </section>
+      </div>
+    </div>
+  </body>
+  <footer>
+    <p>&copy; 2023 Skelation. All rights reserved.</p>
+</footer>
+</html>
