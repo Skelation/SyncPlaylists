@@ -25,18 +25,32 @@ router.get("/post",authCheck,(req,res)=>{
 });
 
 
-router.post("/post",authCheck,async (req,res)=>{
-     let {title,content} = req.body;
-      let newPost = new Post({title,content,author:req.user._id});
-
-      try{
-          await newPost.save();
-          res.status(200).redirect("/profile");
-          
-      }catch(err){
-           req.flash("error_msg","Both title and content are required .");
-           res.redirect("/profile/post")
-      }
-})
+router.post("/post", authCheck, async (req, res) => {
+     const { title, songName, artistName, content } = req.body;
+   
+     // Convert the arrays of song names and artist names into an array of song objects
+     const songs = [];
+     for (let i = 0; i < songName.length; i++) {
+       songs.push({
+         name: songName[i],
+         artist: artistName[i],
+       });
+     }
+   
+     const newPost = new Post({
+       title,
+       songs,
+       content,
+       author: req.user._id,
+     });
+   
+     try {
+       await newPost.save();
+       res.status(200).redirect("/profile");
+     } catch (err) {
+       req.flash("error_msg", "Error submitting the form.");
+       res.redirect("/profile/post");
+     }
+   });
 
 module.exports = router;

@@ -11,25 +11,47 @@
       <form action="/profile/post" method="POST">
         <div class="form-group">
           <label for="exampleforTitle">Playlist Name</label>
-          <input
-            name="title"
-            type="text"
-            class="form-control"
-            id="exampleforTitle"
-          />
+          <input name="title" type="text" class="form-control" id="exampleforTitle" />
         </div>
         <br />
-        <div class="form-group">
-          <label for="exampleforContent">Songs</label>
-          <textarea
-            class="form-control"
-            id="exampleforContent"
-            aria-describedby="emailHelp"
-            name="content"
-          /></textarea>
+        <div id="songsContainer">
+          <!-- Dynamic Song Inputs Will Be Added Here -->
+        </div>
+        <button type="button" class="btn btn-primary" onclick="addSongInput()">Add Song +</button>
         <br />
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
+      
+      <script>
+        function addSongInput() {
+          const songsContainer = document.getElementById('songsContainer');
+      
+          // Create a new div to hold the song inputs
+          const songDiv = document.createElement('div');
+          songDiv.classList.add('song-input');
+      
+          // Create input for song name
+          const songNameInput = document.createElement('input');
+          songNameInput.type = 'text';
+          songNameInput.name = 'songName[]'; // Use an array to collect multiple song names
+          songNameInput.placeholder = 'Song Name';
+          songNameInput.classList.add('form-control');
+      
+          // Create input for artist name
+          const artistNameInput = document.createElement('input');
+          artistNameInput.type = 'text';
+          artistNameInput.name = 'artistName[]'; // Use an array to collect multiple artist names
+          artistNameInput.placeholder = 'Artist Name';
+          artistNameInput.classList.add('form-control');
+      
+          // Append the inputs to the song div
+          songDiv.appendChild(songNameInput);
+          songDiv.appendChild(artistNameInput);
+      
+          // Append the song div to the container
+          songsContainer.appendChild(songDiv);
+        }
+      </script>
     </main>
   </body>
 </html>

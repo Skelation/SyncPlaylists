@@ -1,19 +1,30 @@
 const mongoose = require("mongoose");
 
-const postSchema = new mongoose.Schema({
-    title:{
-        type:String,
-        required:true,
+
+const songSchema = new mongoose.Schema({
+    name: {
+      type: String,
+      required: true,
     },
-    content:{
-        type:String,
-        required:true,
+    artist: {
+      type: String,
+      required: true,
     },
-    date:{
-        type:Date,
-        default:Date.now,
+  });
+  
+  const postSchema = new mongoose.Schema({
+    title: {
+        type: String,
+        required: true,
     },
-    author:String,
+    songs: [songSchema],
+    date: {
+        type: Date,
+        default: Date.now,
+    },
+    author: String,
 });
 
-module.exports = mongoose.model("Post",postSchema); 
+const Post = mongoose.model("Post", postSchema);
+
+module.exports = Post;
