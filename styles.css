@@ -55,6 +55,7 @@ h3 {
   text-align: left;
 }
 
+
 /* New Styles for Profile Page */
 
 .flex-container {
@@ -70,17 +71,20 @@ footer {
   text-align: right;
 }
 
+.playlists-section {
+  display: flex;
+  justify-content: left; /* Center the playlists horizontally */
+}
+
 .playlist-card {
-  width: px; /* Adjust the width as needed */
-  height: 150px; /* Adjust the height as needed */
   background-color: #2b3136;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   overflow: hidden;
-  margin-bottom: 20px;
+  margin: 10px; /* Add margin for additional space between playlists */
   transition: transform 0.3s;
+  width: 18rem; /* Adjust the width as needed */
 }
-
 .playlist-card:hover {
   transform: scale(1.05);
 }
@@ -248,4 +252,9 @@ input:focus,
 textarea:focus {
   outline: none;
   border-color: #64ffda;
+}
+
+.username-playlists {
+  padding-left: 20px;
+  padding-right: 20px; /* Add padding on the right */
 }
