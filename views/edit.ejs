@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include ("partials/header") %>
+    <title>Edit Playlist</title>
+  </head>
+  <body>
+    <%- include ("partials/nav") %>
+    <h1 class="playlist-title">Edit <%= playlist.title %> Playlist</h1>
+
+    <!-- Display each song in the playlist -->
+    <ul class="song-list">
+      <% for(let i=0; i<playlist.songs.length; i++){ %>
+        <li>
+          <strong><%= playlist.songs[i].name %></strong> - <%= playlist.songs[i].artist %>
+          <button class="delete-button" onclick="deleteSong('<%= playlist._id %>', '<%= i %>')">Delete</button>
+        </li>
+      <% } %>
+    </ul>
+
+    <!-- Add Song button -->
+    <form method="POST" action="/profile/edit/<%= playlist._id %>/add-song">
+      <!-- Song Name input -->
+      <input type="text" name="songName" placeholder="Song Name" required>
+      <!-- Artist Name input -->
+      <input type="text" name="artistName" placeholder="Artist Name" required>
+      <!-- Add Song button -->
+      <button type="submit">Add Song</button>
+    </form>
+
+    <!-- Script to handle adding songs dynamically -->
+    <script>
+      function addSong() {
+        const songList = document.querySelector('.song-list');
+
+        // Create a new list item for the new song
+        const newSongItem = document.createElement('li');
+
+        // Create input for song name
+        const songNameInput = document.createElement('input');
+        songNameInput.type = 'text';
+        songNameInput.name = 'newSongs[name][]'; // Use an array to collect multiple song names
+        songNameInput.placeholder = 'Song Name';
+
+        // Create input for artist name
+        const artistNameInput = document.createElement('input');
+        artistNameInput.type = 'text';
+        artistNameInput.name = 'newSongs[artist][]'; // Use an array to collect multiple artist names
+        artistNameInput.placeholder = 'Artist Name';
+
+        // Create delete button for the new song
+        const deleteButton = document.createElement('button');
+        deleteButton.classList.add('delete-button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.addEventListener('click', () => {
+          newSongItem.remove(); // Remove the new song when the delete button is clicked
+        });
+
+        // Append inputs and delete button to the new song item
+        newSongItem.appendChild(songNameInput);
+        newSongItem.appendChild(artistNameInput);
+        newSongItem.appendChild(deleteButton);
+
+        // Append the new song item to the song list
+        songList.appendChild(newSongItem);
+      }
+
+      // Function to handle deleting a song
+      function deleteSong(playlistId, songIndex) {
+        // Perform AJAX request or redirect to handle deletion
+        // You can use fetch or an AJAX library to handle the deletion on the server
+        // For simplicity, you can redirect to a delete route on the server
+        window.location.href = `/profile/edit/${playlistId}/delete/${songIndex}`;
+      }
+    </script>
+  </body>
+</html>

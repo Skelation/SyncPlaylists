@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include ("partials/header") %>
+    <title>Playlist</title>
+  </head>
+  <body>
+    <%- include ("partials/nav") %>
+    <h1 class="playlist-title"><%= playlist.title %></h1>
+
+    <!-- Display each song in the playlist -->
+    <ul class="song-list">
+      <% for(let i=0; i<playlist.songs.length; i++){ %>
+        <li><strong><%= playlist.songs[i].name %></strong> - <%= playlist.songs[i].artist %></li>
+      <% } %>
+    </ul>
+    <a href="/profile/edit/<%= playlist._id %>">Edit Playlist</a>
+  </body>
+</html>
