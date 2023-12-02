@@ -149,5 +149,28 @@ router.get("/edit/:playlistId/delete/:songIndex", authCheck, async (req, res) =>
   }
 });
 
+router.post("/edit/:playlistId", authCheck, async (req, res) => {
+  const { playlistId } = req.params;
+  const { newTitle } = req.body;
+
+  try {
+    // Find the playlist by ID
+    const playlist = await Post.findById(playlistId);
+
+    // Update the playlist title
+    playlist.title = newTitle;
+
+    // Save the updated playlist
+    await playlist.save();
+
+    // Redirect back to the edit page
+    res.redirect(`/profile/edit/${playlistId}`);
+  } catch (err) {
+    console.error(err);
+    req.flash("error_msg", "Error updating the title.");
+    res.redirect(`/profile/edit/${playlistId}`);
+  }
+});
+
 
 module.exports = router;

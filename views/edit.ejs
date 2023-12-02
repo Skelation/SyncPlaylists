@@ -18,6 +18,11 @@
       <% } %>
     </ul>
 
+    <!-- Input field for playlist title -->
+    <form method="POST" action="/profile/edit/<%= playlist._id %>">
+        <input type="text" name="newTitle" value="<%= playlist.title %>" required>
+        <button type="submit">Update Title</button>
+    </form>
     <!-- Add Song button -->
     <form method="POST" action="/profile/edit/<%= playlist._id %>/add-song">
       <!-- Song Name input -->
@@ -27,6 +32,7 @@
       <!-- Add Song button -->
       <button type="submit">Add Song</button>
     </form>
+    
 
     <!-- Script to handle adding songs dynamically -->
     <script>
