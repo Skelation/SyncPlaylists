@@ -10,9 +10,12 @@ body {
 
 .hello-display {
   position: inline;
-  left: 20px; /* Adjust the left position as needed */
-  top: 20px; /* Adjust the top position as needed */
-  padding: 10px; /* Adjust the padding as needed */
+  left: 20px;
+  /* Adjust the left position as needed */
+  top: 20px;
+  /* Adjust the top position as needed */
+  padding: 10px;
+  /* Adjust the padding as needed */
   color: #ffffff;
   font-weight: bold;
   border-radius: 5px;
@@ -23,6 +26,7 @@ body {
   padding-left: 5%;
   font-size: 30px;
 }
+
 nav {
   margin-right: 20px;
 }
@@ -73,7 +77,8 @@ footer {
 
 .playlists-section {
   display: flex;
-  justify-content: left; /* Center the playlists horizontally */
+  justify-content: left;
+  /* Center the playlists horizontally */
 }
 
 .playlist-card {
@@ -81,10 +86,13 @@ footer {
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   overflow: hidden;
-  margin: 10px; /* Add margin for additional space between playlists */
+  margin: 10px;
+  /* Add margin for additional space between playlists */
   transition: transform 0.3s;
-  width: 18rem; /* Adjust the width as needed */
+  width: 18rem;
+  /* Adjust the width as needed */
 }
+
 .playlist-card:hover {
   transform: scale(1.05);
 }
@@ -95,13 +103,15 @@ footer {
 
 .playlist-card-title {
   color: #ffffff;
-  font-size: 1.2rem; /* Adjust the font size as needed */
+  font-size: 1.2rem;
+  /* Adjust the font size as needed */
   margin-bottom: 8px;
 }
 
 .playlist-card-text {
   color: #ffffff;
-  font-size: 14px; /* Adjust the font size as needed */
+  font-size: 14px;
+  /* Adjust the font size as needed */
   margin-bottom: 10px;
 }
 
@@ -117,6 +127,63 @@ footer {
 
 .btn-primary:hover {
   background-color: #ffffff;
+}
+
+.delete-button {
+  font-family: 'Karla', sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.delete-button:hover,
+.delete-button:active {
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  transform: scale(1.05);
+}
+
+.add-song-edit-button {
+  font-family: 'Karla', sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.add-song-edit-button:hover,
+.add-song-edit-button:active {
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  transform: scale(1.05)
+}
+
+.edit-title-button {
+  font-family: 'Karla', sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.edit-title-button:hover,
+.edit-title-button:active {
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  transform: scale(1.05)
 }
 
 img {
@@ -256,5 +323,35 @@ textarea:focus {
 
 .username-playlists {
   padding-left: 20px;
-  padding-right: 20px; /* Add padding on the right */
+  padding-right: 20px;
+  /* Add padding on the right */
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  /* Optional: Remove default padding for cleaner appearance */
+}
+
+/* Optional: Add styles for list items */
+li {
+  margin-bottom: 5px;
+  /* Optional: Add spacing between list items */
+}
+
+.button-like-link {
+  display: inline-block;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  background-color: #4caf50;
+  color: white;
+  border: 1px solid #4caf50;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button-like-link:hover {
+  background-color: #45a049;
 }
