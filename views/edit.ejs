@@ -21,7 +21,7 @@
     <!-- Input field for playlist title -->
     <form method="POST" action="/profile/edit/<%= playlist._id %>">
         <input type="text" name="newTitle" value="<%= playlist.title %>" required>
-        <button type="submit">Update Title</button>
+        <button type="submit" class="edit-title-button">Update Title</button>
     </form>
     <!-- Add Song button -->
     <form method="POST" action="/profile/edit/<%= playlist._id %>/add-song">
