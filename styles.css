@@ -1,11 +1,12 @@
 /* styles.css */
 
 body {
-  background-color: #121212;
-  color: #ffffff;
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
+  width: 500px;
+  height: 1000px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: rgb(6,52,76);
+background: linear-gradient(180deg, rgba(6,52,76,1) 7%, rgba(0,0,0,1) 100%);
 }
 
 .hello-display {
