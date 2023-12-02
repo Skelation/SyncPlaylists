@@ -53,4 +53,124 @@ router.post("/post", authCheck, async (req, res) => {
      }
    });
 
+   router.get("/playlist/:id", authCheck, async (req, res) => {
+    try {
+      const playlistId = req.params.id;
+      const playlist = await Post.findById(playlistId);
+      if (!playlist) {
+        return res.status(404).send("Playlist not found");
+      }
+      res.render("playlist", { user: req.user, playlist });
+    } catch (err) {
+      console.error(err);
+      res.status(500).send("Internal Server Error");
+    }
+  });
+
+  router.get("/edit/:id", authCheck, async (req, res) => {
+    try {
+      const playlistId = req.params.id;
+      const playlist = await Post.findById(playlistId);
+      if (!playlist) {
+        return res.status(404).send("Playlist not found");
+      }
+      res.render("edit", { user: req.user, playlist });
+    } catch (err) {
+      console.error(err);
+      res.status(500).send("Internal Server Error");
+    }
+  });
+
+  router.post("/edit/:playlistId/delete/:songIndex", authCheck, async (req, res) => {
+    const { playlistId, songIndex } = req.params;
+  
+    try {
+      // Find the playlist by ID
+      const playlist = await Post.findById(playlistId);
+  
+      // Remove the song at the specified index
+      playlist.songs.splice(songIndex, 1);
+  
+      // Save the updated playlist
+      await playlist.save();
+  
+      // Redirect back to the edit page
+      res.redirect(`/profile/edit/${playlistId}`);
+    } catch (err) {
+      console.error(err);
+      req.flash("error_msg", "Error deleting the song.");
+      res.redirect(`/profile/edit/${playlistId}`);
+    }
+  });
+
+  router.post("/edit/:playlistId/add-song", authCheck, async (req, res) => {
+    const { playlistId } = req.params;
+    const { songName, artistName } = req.body;
+  
+    try {
+      // Find the playlist by ID
+      const playlist = await Post.findById(playlistId);
+  
+      // Add the new song to the playlist
+      playlist.songs.push({ name: songName, artist: artistName });
+  
+      // Save the updated playlist
+      await playlist.save();
+  
+      // Redirect back to the edit page
+      res.redirect(`/profile/edit/${playlistId}`);
+    } catch (err) {
+      console.error(err);
+      req.flash("error_msg", "Error adding the song.");
+      res.redirect(`/profile/edit/${playlistId}`);
+    }
+  });
+
+  // In your profile-route.js or a dedicated routes file
+router.get("/edit/:playlistId/delete/:songIndex", authCheck, async (req, res) => {
+  const { playlistId, songIndex } = req.params;
+
+  try {
+    // Find the playlist by ID
+    const playlist = await Post.findById(playlistId);
+
+    // Remove the song at the specified index
+    playlist.songs.splice(songIndex, 1);
+
+    // Save the updated playlist
+    await playlist.save();
+
+    // Redirect back to the edit page
+    res.redirect(`/profile/edit/${playlistId}`);
+  } catch (err) {
+    console.error(err);
+    req.flash("error_msg", "Error deleting the song.");
+    res.redirect(`/profile/edit/${playlistId}`);
+  }
+});
+
+router.post("/edit/:playlistId", authCheck, async (req, res) => {
+  const { playlistId } = req.params;
+  const { newTitle } = req.body;
+
+  try {
+    // Find the playlist by ID
+    const playlist = await Post.findById(playlistId);
+
+    // Update the playlist title
+    playlist.title = newTitle;
+
+    // Save the updated playlist
+    await playlist.save();
+
+    // Redirect back to the edit page
+    res.redirect(`/profile/edit/${playlistId}`);
+  } catch (err) {
+    console.error(err);
+    req.flash("error_msg", "Error updating the title.");
+    res.redirect(`/profile/edit/${playlistId}`);
+  }
+});
+
+
 module.exports = router;

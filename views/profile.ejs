@@ -13,7 +13,10 @@
         <section class="playlists-section">
           <div class="playlist-card">
             <div class="playlist-card-body">
-              <h5 class="playlist-card-title"><%= posts[i].title %></h5>
+              <!-- Add a link to the playlist page for each playlist -->
+              <a href="/profile/playlist/<%= posts[i]._id %>">
+                <h5 class="playlist-card-title"><%= posts[i].title %></h5>
+              </a>
               
               <!-- Display each song in the playlist -->
               <ul class="song-list">
