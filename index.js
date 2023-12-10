@@ -12,11 +12,11 @@ const passport = require('passport');
 app.use(express.static(__dirname + '/'));
 
 
-app.use(session({ secret: 'ilovelilbabycatsifyouknowwhatimean' }));
+app.use(session({ secret: process.env.SECRET }));
 
 
-mongoose.connect("mongodb+srv://Heribio:HbeaaSadPa10E@cluster0.3s0ylz0.mongodb.net/?retryWrites=true&w=majority"
-,{useNewUrlParser:true,
+mongoose.connect(process.env.MONGO_URL,
+{useNewUrlParser:true,
    useUnifiedTopology:true }
 ).then(
     ()=>{
