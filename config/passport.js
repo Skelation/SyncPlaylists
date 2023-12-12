@@ -44,8 +44,8 @@ passport.use(
 
 passport.use(
   new GoogleStrategy({
-    clientID: "877648253534-lll7jmdkvju12gjim86hg18e2fbbm7f9.apps.googleusercontent.com",
-    clientSecret: "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",
+    clientID: process.env.google_client_id,
+    clientSecret: process.env.google_client_secret,
     callbackURL:"/auth/google/redirect"
   },
   (acceseToken,refreshToken,profile,done)=>{
@@ -75,8 +75,8 @@ passport.use(
 );
 
 passport.use(new GithubStrategy({
-      clientID:"211a65af03008d6d05c0",
-      clientSecret:"8379d73b9f8484adebe4205c67c7eaea54f822ca",
+      clientID:process.env.github_client_id,
+      clientSecret:process.env.github_client_secret,
       callbackURL:"/auth/github/redirect"
 },(accessToken,refreshToken,profile,done)=>{
      console.log(profile);
