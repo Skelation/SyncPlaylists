@@ -1,12 +1,10 @@
 /* styles.css */
 
 body {
-  width: 500px;
   height: 1000px;
   flex-shrink: 0;
   border-radius: 10px;
-  background: rgb(6,52,76);
-background: linear-gradient(180deg, rgba(6,52,76,1) 7%, rgba(0,0,0,1) 100%);
+  background: rgb(0, 0, 0);
 }
 
 .hello-display {
@@ -355,4 +353,13 @@ li {
 
 .button-like-link:hover {
   background-color: #45a049;
+}
+
+.bubble {
+  border-radius: 10px;
+  background: linear-gradient(180deg, #06344c 0%, #121212 100%);
+  display: flex;
+  min-height: 888px;
+  flex-direction: column;
+  margin: 5px;
 }

@@ -6,6 +6,7 @@
   </head>
   <body>
     <%- include ("partials/nav") %>
+    <div class ="bubble">
     <h1 class="username-playlists"><%= user.name %>'s playlists</h1>
 
     <% if(posts.length > 0){ %>
@@ -30,5 +31,6 @@
         </section>
       <% } %>
     <% } %>
+    </div>
   </body>
 </html>
