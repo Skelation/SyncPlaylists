@@ -17,15 +17,7 @@
               <!-- Add a link to the playlist page for each playlist -->
               <a href="/profile/playlist/<%= posts[i]._id %>">
                 <h5 class="playlist-card-title"><%= posts[i].title %></h5>
-              </a>
-              
-              <!-- Display each song in the playlist -->
-              <ul class="song-list">
-                <% for(let j=0; j<posts[i].songs.length; j++){ %>
-                  <li><strong><%= posts[i].songs[j].name %></strong> - <%= posts[i].songs[j].artist %></li>
-                <% } %>
-              </ul>
-              
+              </a>        
             </div>
           </div>
         </section>
