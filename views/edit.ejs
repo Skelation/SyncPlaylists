@@ -6,14 +6,15 @@
   </head>
   <body>
     <%- include ("partials/nav") %>
+    <div class="bubble">
+      <main style="padding: 3rem">
     <h1 class="playlist-title">Edit <%= playlist.title %> Playlist</h1>
 
     <!-- Display each song in the playlist -->
     <ul class="song-list">
       <% for(let i=0; i<playlist.songs.length; i++){ %>
         <li>
-          <strong><%= playlist.songs[i].name %></strong> - <%= playlist.songs[i].artist %>
-          <button class="delete-button" onclick="deleteSong('<%= playlist._id %>', '<%= i %>')">Delete</button>
+          <h3><%= playlist.songs[i].name %> - <%= playlist.songs[i].artist %> <button class="delete-button" onclick="deleteSong('<%= playlist._id %>', '<%= i %>')">Delete</button></h3>
         </li>
       <% } %>
     </ul>
@@ -79,5 +80,7 @@
         window.location.href = `/profile/edit/${playlistId}/delete/${songIndex}`;
       }
     </script>
+    </main>
+    </div>
   </body>
 </html>

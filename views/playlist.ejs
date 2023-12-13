@@ -13,7 +13,7 @@
     <!-- Display each song in the playlist -->
     <ul class="song-list">
       <% for(let i=0; i<playlist.songs.length; i++){ %>
-        <li><h3><%= playlist.songs[i].name %></h3> - <p><%= playlist.songs[i].artist %></p></li>
+        <li><h3><%= playlist.songs[i].name %> - <%= playlist.songs[i].artist %></h3></li>
       <% } %>
     </ul>
     <a class="button-like-link" href="/profile/edit/<%= playlist._id %>">Edit Playlist</a>
