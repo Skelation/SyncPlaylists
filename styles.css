@@ -1,4 +1,7 @@
 /* styles.css */
+* {
+  font-family: Poppins, sans-serif;
+}
 
 body {
   height: 1000px;

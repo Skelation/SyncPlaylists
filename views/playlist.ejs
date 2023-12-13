@@ -7,6 +7,7 @@
   <body>
     <%- include ("partials/nav") %>
     <div class="bubble">
+      <div style="padding: 3rem">
     <h1 class="playlist-title"><%= playlist.title %></h1>
 
     <!-- Display each song in the playlist -->
@@ -17,5 +18,6 @@
     </ul>
     <a class="button-like-link" href="/profile/edit/<%= playlist._id %>">Edit Playlist</a>
   </body>
+</div>
 </div>
 </html>

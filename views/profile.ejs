@@ -7,9 +7,9 @@
   <body>
     <%- include ("partials/nav") %>
     <div class ="bubble">
-    <h1 class="username-playlists"><%= user.name %>'s playlists</h1>
-
-    <% if(posts.length > 0){ %>
+      <div style="padding: 3rem">
+        <h1 class="username-playlists"><%= user.name %>'s playlists</h1>
+      <% if(posts.length > 0){ %>
       <% for(let i=0; i<posts.length; i++){ %>
         <section class="playlists-section">
           <div class="playlist-card">
@@ -23,6 +23,7 @@
         </section>
       <% } %>
     <% } %>
+      </div>
     </div>
   </body>
 </html>
