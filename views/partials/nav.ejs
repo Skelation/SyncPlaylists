@@ -1,41 +1,48 @@
 <header>
-<nav
-class="navbar navbar-dark bg-dark navbar-expand-lg navbar-light bg-light"
->
-<div class="container-fluid">
-  <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-      <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-      <% if(!user){ %>
-        <li class="nav-item">
-          <a class="nav-link" href="/auth/login">Login</a>
-        </li>
-      <% } %>
-      <% if(!user){ %>
-        <li class="nav-item">
-          <a class="nav-link" href="/auth/signup">Signup</a>
-        </li>
-      <% } %>
-      <% if(user){ %>
-        <li class="nav-item">
-          <a class="nav-link" href="/auth/logout">Logout</a>
-        </li>
-        
+  <nav class="navbar">
+    <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="/profile">Your Playlists</a>
+        <a class="nav-link" href="/">
+          <img src="/assets/home.png" />
+        </a>
+      </li>
+      <% if(!user){ %>
+      <li class="nav-item">
+        <a class="nav-link" href="/auth/login">
+          Login
+        </a>
+      </li>
+      <% } %> <% if(!user){ %>
+      <li class="nav-item">
+        <a class="nav-link" href="/auth/signup">Signup</a>
+      </li>
+      <% } %> <% if(user){ %>
+      <li class="nav-item">
+        <a class="nav-link" href="/profile">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48" height="46" viewBox="0 0 48 46" fill="none">
+            <path d="M47.15 0H0V46H47.15V0Z" fill="url(#pattern0)"/>
+            <defs>
+              <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+                <use xlink:href="#image0_95_6" transform="matrix(0.01 0 0 0.01025 0 -0.0125)"/>
+              </pattern>
+              <image id="image0_95_6" width="100" height="100" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAAXNSR0IArs4c6QAABGVJREFUeAHtncuLFUcUh8fJEIeowRdRojI+Vu6yEIVBMAH/AQMuM8K4dWV8oRB0o2DWvkhWgiCuJIFkE3ThJoFgQgiiCxE0MSiCqPgWv1DQF/rWvV19u6fpOt39axhuV1d1nVPfrx9V1ad7xsa0iIAIiIAIiIAIiIAIiIAIiIAIiIAIiIAIiIAIiIAIiIAIJASApcBu4AfgF2CH4NRMIBFhFvgZeEP/8g7YVLNL3TOXI0K/JHCoe4RqaDGwBJgBfgRe+9QD6aM1uNcNE8DHQNblKKBBX5YEqeJwAb4AHvWhLZeQIHMVBJgE/ivHf2CvuIIAHwBTwPoG/Y2nRXQ9owGs5TfEEwQ4DDwr73u0PRd7gnxeoSdxBEl6IBW2o9aqWimIGxg1dWmlID81VQ2glYJ8JUGGEohzD3E3ReAQ8HSoW7Y3tu8M6fVSgPEWdHur7GXt67HRb0kCQFWCvAc+K+mGdusRqEgQNxX/da9O/c6BwBwF+Qc4DmyYgwvaNU2ghCBuOt5Ny+8EJtJ1ab0CAgUEuQEcBD6pwGz1VQDLgP3AuYb9fZSmkSPIW+A7849mgVXAfdvDjUzvioxD9qTFM7sOnM1srv2MIoIsMCtC2jHgmn3umR6OLEi6zabXgTOZzbWf0UpB3D3kX/vsh3rYPkHc6ZvEK+1rWA/L9QhH7mWZvky11blQt7etbTbdLgliTB4JIkGMETDmTqvOkJYEymU+oDJ27ITd6UKgXJiAodyuBMoZQh52JXmDaOgwuAEb2zdSBzoRKBc+LA3lAp0IlDOEPN+VLgTK5VMwVqIlgXLu7amhizHc3XAH+HKoGkA3CBhrJXBEghgRBZgP3JQgBgRJXva8kCWG227Azfa7kLyP7r5RciskRuMEAZZHCpRzARZrRz10gA+Brcncm3sV72WeEL38UW1ELxcxUM6F/M+EACQz0NuAo8BV4EUPcNHfkB1TeRED5b7NAgFsBE4DD4uCzyj/JsuWue2RAuXuuMuPDyP5UMx5wJ09VS5PfFtm05EC5WZ9IMAa4HaVKqTquuvbM5tO7iF1Bsq9AhalgST3ij9SAKte/TVtz/x6zYFyB3wgwK6qFfDqu+jbVDpAIHmLyWNYafJwwLyyfALAvUrxD1a23bepdIBAkQHeIOvcLW7sMhkwryyfAPA4F2v5Arp/+MDz0sDf5Xnn7tnMy1WNgXIDb74Cp3KxlivwW97BYDK/5kC5P30IwHQ53sG93MeQt/i2zKcjBMq5aZEpHwxwKYi3eOYx30Yj0pHisk76cIAVoSd+BfVw82F9H8j07ZlNRxLkCfCpDwVYCfxeEH66uDv7TjRWDAckYqDcZWDeEFEmgL3AgzTpEdavAJv9+hqZjhgo900WsOTpoAvr+R74a8h/MHgOXE++4DOdVU9jt0cKlFtXBBiwEFgNNOOrDEUap7IiIAIiIAIiIAIiIAIiIAIiIAIiIAIiIAIiIAIiIAIiIAIiIAIiIAIiIAIiIAIiUBeB/wF72CJgbCF5KwAAAABJRU5ErkJggg=="/>
+            </defs>
+          </svg>
+        </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="/profile/post">New Playlist</a>
+        <a class="nav-link" href="/profile/post">
+          <img src="/assets/add-playlist-icon.png">
+        </a>
       </li>
-      
+
       <li>
-        <a class="nav-link" href="/profile/account">Account</a>
+        <a class="nav-link" href="/profile/account">
+          <img src="/assets/your-account-icon.png">
+        </a>
       </li>
       <% } %>
-     
     </ul>
-  </div>
-</div>
-</nav>
+  </nav>
 </header>

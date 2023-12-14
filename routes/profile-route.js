@@ -53,6 +53,10 @@ router.post("/post", authCheck, async (req, res) => {
      }
    });
 
+   router.get("/account",authCheck,(req,res)=>{
+    res.render("account",{user:req.user});
+});
+
    router.get("/playlist/:id", authCheck, async (req, res) => {
     try {
       const playlistId = req.params.id;
