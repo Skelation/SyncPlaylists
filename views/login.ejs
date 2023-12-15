@@ -44,6 +44,33 @@
        
       </div> 
       <br />
+      <form  action="/auth/login" method="POST">
+        <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input
+            type="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="Enter email"
+            name="username"
+        />
+        </div>
+        <br />
+        <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+            placeholder="Password"
+            name="password"
+        />
+        </div>
+        <br />
+        <button class="btn btn-primary">Submit</button>
+        <%- include ("partials/message") %>
+    </form>
     </main>
     </div>
   </body>
