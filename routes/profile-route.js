@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { log } = require("console");
 const Post = require('../models/post-model')
+const User = require('../models/user-model')
 
 
 const authCheck = (req,res,next)=>{
@@ -55,7 +56,11 @@ router.post("/post", authCheck, async (req, res) => {
 
    router.get("/account",authCheck,(req,res)=>{
     res.render("account",{user:req.user});
-});
+  });
+
+   router.get("/editprofile",authCheck,(req,res)=>{
+    res.render("editprofile",{user:req.user});
+   });
 
    router.get("/playlist/:id", authCheck, async (req, res) => {
     try {
@@ -104,6 +109,29 @@ router.post("/post", authCheck, async (req, res) => {
       console.error(err);
       req.flash("error_msg", "Error deleting the song.");
       res.redirect(`/profile/edit/${playlistId}`);
+    }
+  });
+
+  router.post("/editprofile", authCheck, async (req, res) => {
+    const { name, gender } = req.body;
+
+    try {
+      // Find the user by ID
+      const user = await User.findById(req.user._id);
+
+      // Update the user's name and gender
+      user.name = name;
+      user.gender = gender;
+
+      // Save the updated user
+      await user.save();
+
+      // Redirect back to the profile page
+      res.redirect("/profile");
+    } catch (err) {
+      console.error(err);
+      req.flash("error_msg", "Error updating the profile.");
+      res.redirect("/profile");
     }
   });
 

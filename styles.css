@@ -308,18 +308,12 @@ nav li {
 }
 
 form {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #1f1f1f;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: block;
+    margin-top: 0em;
 }
 
 label {
-  display: block;
-  margin-bottom: 8px;
-  color: #64ffda;
+  cursor: default;
 }
 
 input,
@@ -332,12 +326,6 @@ textarea {
   border-radius: 4px;
   background-color: #121212;
   color: #ffffff;
-}
-
-input:focus,
-textarea:focus {
-  outline: none;
-  border-color: #64ffda;
 }
 
 .username-playlists {
@@ -379,7 +367,7 @@ li {
   position: relative; /* This makes the .bubble div a positioned ancestor */
   border-radius: 10px;
   background: linear-gradient(180deg, #06344c 0%, #121212 100%);
-  min-height: 888px;
+  min-height: 1000px;
   flex-direction: column;
   margin: 5px;
  }
@@ -463,4 +451,145 @@ li {
   top: 50%;
   position: absolute;
   transform: translateY(-50%);
+ }
+
+ .center-menu {
+    display: flex;
+    flex-flow: column;
+    place-content: center flex-start;
+    -webkit-box-pack: start;
+    align-items: flex-start;
+    max-width: 800px;
+    min-height: 800px;
+    margin: 0px auto;
+    padding: 32px 8px;
+ }
+
+ .Form-group {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  padding-block-end: var(--encore-spacing-looser,24px);
+ }
+
+ .center-menu-content {
+  width: 100%;
+ }
+
+ .center-menu-content-section-form {
+  padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid;
+ }
+
+ .Label-form-group {
+  box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    font-size: 0.875rem;
+    font-weight: 700;
+    font-family: var(--font-family,CircularSp,CircularSp-Arab,CircularSp-Hebr,CircularSp-Cyrl,CircularSp-Grek,CircularSp-Deva,var(--fallback-fonts,sans-serif));
+    -webkit-box-align: center;
+    align-items: center;
+    display: flex;
+    inline-size: 100%;
+    padding-block-end: var(--encore-spacing-tighter-2,8px);
+ }
+
+ .LabelInner {
+  display: inline-block;
+  color: #ffffff;
+  -webkit-tap-highlight-color: transparent;
+    font-size: 0.875rem;
+    font-weight: 700;
+    font-family: var(--font-family,CircularSp,CircularSp-Arab,CircularSp-Hebr,CircularSp-Cyrl,CircularSp-Grek,CircularSp-Deva,var(--fallback-fonts,sans-serif));
+ }
+
+ .Input {
+  appearance: none;
+    background-image: none;
+    border: 0px;
+    display: block;
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: var(--font-family,CircularSp,CircularSp-Arab,CircularSp-Hebr,CircularSp-Cyrl,CircularSp-Grek,CircularSp-Deva,var(--fallback-fonts,sans-serif));
+    transition: box-shadow 0.1s ease-in-out 0s, color 0.1s ease-in-out 0s;
+    inline-size: 100%;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    margin-block: 0px;
+    border-radius: var(--encore-corner-radius-base,4px);
+    padding-inline: 14px;
+    padding-block-start: var(--encore-spacing-tighter-2,8px);
+    padding-block-end: var(--encore-spacing-tighter-2,8px);
+    min-block-size: var(--encore-control-size-base,48px);
+    background-color: var(--background-base,#ffffff);
+    box-shadow: inset 0 0 0 1px var(--essential-subdued,#878787);
+    color: var(--text-base,#000000);
+    --background-base: #121212;
+    --background-highlight: #1a1a1a;
+    --background-press: #000;
+    --background-elevated-base: #242424;
+    --background-elevated-highlight: #2a2a2a;
+    --background-elevated-press: #000;
+    --background-tinted-base: hsla(0,0%,100%,.07);
+    --background-tinted-highlight: hsla(0,0%,100%,.1);
+    --background-tinted-press: hsla(0,0%,100%,.04);
+    --background-unsafe-for-small-text-base: #121212;
+    --background-unsafe-for-small-text-highlight: #121212;
+    --background-unsafe-for-small-text-press: #121212;
+    --text-base: #fff;
+    --text-subdued: #a7a7a7;
+    --text-bright-accent: #1ed760;
+    --text-negative: #f15e6c;
+    --text-warning: #ffa42b;
+    --text-positive: #1ed760;
+    --text-announcement: #3d91f4;
+    --essential-base: #fff;
+    --essential-subdued: #727272;
+    --essential-bright-accent: #1ed760;
+    --essential-negative: #e91429;
+    --essential-warning: #ffa42b;
+    --essential-positive: #1ed760;
+    --essential-announcement: #0d72ea;
+    --decorative-base: #fff;
+    --decorative-subdued: #292929;
+ }
+
+ .edit-profile-buttons {
+    display: block;
+    text-align: end;
+ }
+
+ .Button-secondary {
+  box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: var(--font-family,CircularSp,CircularSp-Arab,CircularSp-Hebr,CircularSp-Cyrl,CircularSp-Grek,CircularSp-Deva,var(--fallback-fonts,sans-serif));
+    background-color: transparent;
+    border: 0px;
+    border-radius: 9999px;
+    cursor: pointer;
+    overflow-wrap: anywhere;
+    text-align: center;
+    text-decoration: none;
+    text-transform: none;
+    touch-action: manipulation;
+    transition-duration: 33ms;
+    transition-property: background-color, border-color, color, box-shadow, filter, transform;
+    user-select: none;
+    vertical-align: middle;
+    transform: translate3d(0px, 0px, 0px);
+    color: var(--text-subdued,#6a6a6a);
+    min-inline-size: 0px;
+    min-block-size: var(--encore-control-size-base,48px);
+    padding-block-start: var(--encore-spacing-tighter-2,8px);
+    padding-block-end: var(--encore-spacing-tighter-2,8px);
+    padding-inline-start: var(--encore-spacing-looser-2,32px);
+    padding-inline-end: var(--encore-spacing-looser-2,32px);
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    position: relative;
  }
