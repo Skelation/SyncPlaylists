@@ -33,6 +33,8 @@
       <!-- Add Song button -->
       <button type="submit" class="add-song-edit-button">Add Song</button>
     </form>
+    <button class="delete-playlist-button" onclick="deletePlaylist('<%= playlist._id %>')">Delete Playlist</button>
+    
     
 
     <!-- Script to handle adding songs dynamically -->
@@ -78,6 +80,11 @@
         // You can use fetch or an AJAX library to handle the deletion on the server
         // For simplicity, you can redirect to a delete route on the server
         window.location.href = `/profile/edit/${playlistId}/delete/${songIndex}`;
+      }
+
+      // Function to handle deleting a playlist
+      function deletePlaylist(playlistId) {
+        window.location.href = `/profile/edit/${playlistId}/delete`;
       }
     </script>
     </main>

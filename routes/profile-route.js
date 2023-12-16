@@ -204,5 +204,20 @@ router.post("/edit/:playlistId", authCheck, async (req, res) => {
   }
 });
 
+router.get(`/edit/:playlistId/delete`, authCheck, async (req, res) => {
+  const { playlistId } = req.params;
+
+  try {
+    const playlist = await Post.findById(playlistId);
+    console.log(playlist);
+    await Post.findByIdAndDelete(playlistId);
+    req.flash("success_msg", "Playlist deleted successfully.");
+    res.redirect('/profile')
+
+  } catch (err) {
+    req.flash("error_msg", "Error deleting the playlist.");
+    res.redirect(`/profile/edit/${playlistId}`);
+  }
+});
 
 module.exports = router;
