@@ -220,4 +220,20 @@ router.get(`/edit/:playlistId/delete`, authCheck, async (req, res) => {
   }
 });
 
+router.post(`/edit/:playlistId/add-collaborator`, authCheck, async (req, res) => {
+  const { playlistId } = req.params;
+  const { collaborator } = req.body;
+  const playlist = await Post.findById(playlistId);
+
+  try {
+    playlist.collaborators.push({id: collaborator});
+    await playlist.save();
+    res.redirect(`/profile/edit/${playlistId}`);
+    console.log(playlist);
+  } catch (err){
+    req.flash("error_msg", "Error adding the collaborator.");
+    res.redirect(`/profile/edit/${playlistId}`);
+  }
+});
+
 module.exports = router;

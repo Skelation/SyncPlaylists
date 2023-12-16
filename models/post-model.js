@@ -11,6 +11,17 @@ const songSchema = new mongoose.Schema({
       required: true,
     },
   });
+
+  const collaboratorSchema = new mongoose.Schema({
+    name: {
+      type: String,
+      required: false,
+    },
+    id: {
+      type: String,
+      required: false,
+    },
+  });
   
   const postSchema = new mongoose.Schema({
     title: {
@@ -23,6 +34,7 @@ const songSchema = new mongoose.Schema({
         default: Date.now,
     },
     author: String,
+    collaborators: [collaboratorSchema],
 });
 
 const Post = mongoose.model("Post", postSchema);
