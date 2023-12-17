@@ -18,7 +18,8 @@ const authCheck = (req,res,next)=>{
 
 router.get("/",authCheck,async(req,res)=>{
      let postFound = await Post.find({author:req.user._id});
-     res.render("profile",{user:req.user,posts:postFound});
+     let collabPosts = await Post.find({collaborators: {$elemMatch: {id: req.user._id}}}).populate('collaborators');
+     res.render("profile",{user:req.user,posts:postFound, collaborativePosts:collabPosts});
 });
 
 router.get("/post",authCheck,(req,res)=>{

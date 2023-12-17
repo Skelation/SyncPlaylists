@@ -6,8 +6,7 @@
   </head>
   <body>
     <%- include ("partials/nav") %>
-    <div class ="bubble">
-    <main style="padding: 3rem">
+    <main class="center-login-menu">
       <div class="row">
         <div class="col-md-2">
           <a
@@ -46,10 +45,12 @@
       <br />
       <form  action="/auth/login" method="POST">
         <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
+          <div class="Label-form-group">
+        <label class="LabelInner" for="exampleInputEmail1">Email address</label>
+          </div>
         <input
             type="email"
-            class="form-control"
+            class="Input"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             placeholder="Enter email"
@@ -58,10 +59,12 @@
         </div>
         <br />
         <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
+          <div class="Label-form-group">
+            <label for="exampleInputPassword1" class="LabelInner">Password</label>
+          </div>
         <input
             type="password"
-            class="form-control"
+            class="Input"
             id="exampleInputPassword1"
             placeholder="Password"
             name="password"
@@ -72,6 +75,5 @@
         <%- include ("partials/message") %>
     </form>
     </main>
-    </div>
   </body>
 </html>

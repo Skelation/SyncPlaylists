@@ -23,6 +23,21 @@
         </section>
       <% } %>
     <% } %>
+      <h1 class="username-playlists"><%= user.name %>'s collab playlists</h1>
+      <% if(collaborativePosts.length > 0){ %>
+        <% for(let i=0; i<collabPosts.length; i++){ %>
+          <section class="playlists-section">
+            <div class="playlist-card">
+              <div class="playlist-card-body">
+                <!-- Add a link to the playlist page for each playlist -->
+                <a href="/profile/playlist/<%= collaborativePosts[i]._id %>">
+                  <h5 class="playlist-card-title"><%= collaborativePosts[i].title %></h5>
+                </a>        
+              </div>
+            </div>
+          </section> 
+        <% } %>
+      <% } %>
       </div>
     </div>
   </body>

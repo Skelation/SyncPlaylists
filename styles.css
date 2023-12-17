@@ -309,7 +309,8 @@ nav li {
 
 form {
   display: block;
-    margin-top: 0em;
+  margin-top: 0em;
+  width: 100%;
 }
 
 label {
@@ -592,4 +593,16 @@ li {
     -webkit-box-pack: center;
     justify-content: center;
     position: relative;
+ }
+
+ .center-login-menu {
+  display: flex;
+  flex-flow: column;
+  place-content: center flex-start;
+  -webkit-box-pack: start;
+  align-items: flex-start;
+  max-width: 600px;
+  min-height: 800px;
+  margin: 0px auto;
+  padding: 32px 8px;
  }
