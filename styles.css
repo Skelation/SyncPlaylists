@@ -1,9 +1,11 @@
 /* styles.css */
-/*All*/
+/* All elements use Poppins as the font */
 * {
   font-family: Poppins, sans-serif;
 }
 
+
+/* Body styling */
 body {
   height: 1000px;
   flex-shrink: 0;
@@ -11,7 +13,7 @@ body {
   background: rgb(0, 0, 0);
 }
 
-/*Homepage Hello Heribio*/
+/* Styling for the "Hello Heribio" section on the homepage */
 .hello-display {
   color: #fff;
   font-family: Poppins, sans-serif;
@@ -26,7 +28,7 @@ body {
   padding-left: 131px;
 }
 
-/*Subtitle its in the name*/
+/* Subtitle styling */
 .subtitle {
   width: 251px;
   height: 30px;
@@ -40,7 +42,7 @@ body {
   padding-left: 131px;
 }
 
-/*Boxes featured playlist homepage*/
+/* Styling for boxes in the featured playlist section on the homepage */
 .boxes {
   display: flex;
   flex-direction: column;
@@ -67,7 +69,7 @@ body {
   transform: scale(1.05);
 }
 
-/*Nav-Bar*/
+/* Navigation bar styling */
 nav {
   margin-right: 20px;
 }
@@ -120,7 +122,7 @@ nav a {
   }
 }
 
-/*Generic*/
+/* Styling for the header, main content, and various text elements */
 header {
   background-color: #121212;
   margin: 10px;
@@ -175,7 +177,7 @@ footer {
   text-align: right;
 }
 
-/*Input Box*/
+/* Input box styling */
 input,
 textarea {
   width: 100%;
@@ -188,7 +190,7 @@ textarea {
   color: #ffffff;
 }
 
-/*Playlist-cards in profile.ejs and */
+/* Styling for playlist cards in profile.ejs and other buttons */
 .playlists-section {
   display: flex;
   justify-content: left;
@@ -347,7 +349,7 @@ textarea {
   background-color: #45a049;
 }
 
-/*Blue Gradient background*/
+/* Styling for the blue gradient background */
 .bubble {
   position: relative;
   /* This makes the .bubble div a positioned ancestor */
@@ -358,6 +360,7 @@ textarea {
   margin: 5px;
 }
 
+/* Styling for centered menu and settings menu */
 .centered-menu {
   position: absolute;
   /* This positions the .centered-menu relative to the .bubble div */
@@ -390,7 +393,7 @@ textarea {
   border-radius: 10px;
 }
 
-/*Section in settings menu*/
+/* Styling for section in settings menu */
 .Box_Component {
   margin-left: 5px;
   margin-right: 5px;
@@ -414,7 +417,7 @@ textarea {
   transform: scale(1.015);
 }
 
-/*Button of settings menu*/
+/* Styling for buttons in settings menu */
 .RowButton {
   color: #fff;
   line-height: 40px;
@@ -424,7 +427,7 @@ textarea {
   align-items: center;
 }
 
-/*Arrow in settings menu*/
+/* Styling for arrow, icon, and label in settings menu */
 .svg-container {
   position: absolute;
   right: 5%;
@@ -434,7 +437,6 @@ textarea {
   align-items: center;
 }
 
-/*Icon in settings menu*/
 .svg-container-left {
   top: 50%;
   left: 5%;
@@ -444,7 +446,6 @@ textarea {
   align-items: center;
 }
 
-/*Label in settings menu*/
 .menu-label {
   left: 15%;
   top: 50%;
@@ -452,7 +453,7 @@ textarea {
   transform: translateY(-50%);
 }
 
-/*Account Settings*/
+/* Styling for account settings section */
 .center-menu {
   display: flex;
   flex-flow: column;
