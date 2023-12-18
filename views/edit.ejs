@@ -34,8 +34,8 @@
       <button type="submit" class="add-song-edit-button">Add Song</button>
     </form>
     <form method="POST" action="/profile/edit/<%= playlist._id %>/add-collaborator">
-      <!-- Collaborator Name input -->
-      <input type="text" name="collaboratorName" placeholder="Collaborator Name" required>
+      <!-- Collaborator Id input -->
+      <input type="text" name="collaboratorId" placeholder="Collaborator Id" required>
       <!-- Add Collaborator button -->
       <button type="submit" class="edit-title-button">Add Collaborator</button>
       <h2><%- playlist.collaborators._id %></h2>

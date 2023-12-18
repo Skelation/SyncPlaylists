@@ -18,7 +18,13 @@ const authCheck = (req,res,next)=>{
 
 router.get("/",authCheck,async(req,res)=>{
      let postFound = await Post.find({author:req.user._id});
-     let collabPosts = await Post.find({collaborators: {$elemMatch: {id: req.user._id}}}).populate('collaborators');
+     let collabPosts = await Post.find({
+      'collaborators': {
+        $elemMatch: {
+          id: req.user._id
+        }
+      }
+     });
      res.render("profile",{user:req.user,posts:postFound, collaborativePosts:collabPosts});
 });
 
@@ -136,29 +142,6 @@ router.post("/post", authCheck, async (req, res) => {
     }
   });
 
-  router.post("/edit/:playlistId/add-song", authCheck, async (req, res) => {
-    const { playlistId } = req.params;
-    const { songName, artistName } = req.body;
-  
-    try {
-      // Find the playlist by ID
-      const playlist = await Post.findById(playlistId);
-  
-      // Add the new song to the playlist
-      playlist.songs.push({ name: songName, artist: artistName });
-  
-      // Save the updated playlist
-      await playlist.save();
-  
-      // Redirect back to the edit page
-      res.redirect(`/profile/edit/${playlistId}`);
-    } catch (err) {
-      console.error(err);
-      req.flash("error_msg", "Error adding the song.");
-      res.redirect(`/profile/edit/${playlistId}`);
-    }
-  });
-
   // In your profile-route.js or a dedicated routes file
 router.get("/edit/:playlistId/delete/:songIndex", authCheck, async (req, res) => {
   const { playlistId, songIndex } = req.params;
@@ -221,14 +204,44 @@ router.get(`/edit/:playlistId/delete`, authCheck, async (req, res) => {
   }
 });
 
-router.post(`/edit/:playlistId/add-collaborator`, authCheck, async (req, res) => {
+router.post("/edit/:playlistId/add-song", authCheck, async (req, res) => {
   const { playlistId } = req.params;
-  const { collaborator } = req.body;
-  const playlist = await Post.findById(playlistId);
+  const { songName, artistName } = req.body;
 
   try {
-    playlist.collaborators.push({id: collaborator});
+    // Find the playlist by ID
+    const playlist = await Post.findById(playlistId);
+
+    // Add the new song to the playlist
+    playlist.songs.push({ name: songName, artist: artistName });
+
+    // Save the updated playlist
     await playlist.save();
+
+    // Redirect back to the edit page
+    res.redirect(`/profile/edit/${playlistId}`);
+  } catch (err) {
+    console.error(err);
+    req.flash("error_msg", "Error adding the song.");
+    res.redirect(`/profile/edit/${playlistId}`);
+  }
+});
+
+router.post(`/edit/:playlistId/add-collaborator`, authCheck, async (req, res) => {
+  const { playlistId } = req.params;
+  const { collaboratorId } = req.body;
+
+  try {
+    // Find the playlist by ID
+    const playlist = await Post.findById(playlistId);
+
+    // Add the new song to the playlist
+    playlist.collaborators.push({ id: collaboratorId });
+
+    // Save the updated playlist
+    await playlist.save();
+
+    // Redirect back to the edit page
     res.redirect(`/profile/edit/${playlistId}`);
     console.log(playlist);
   } catch (err){
