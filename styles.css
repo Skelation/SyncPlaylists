@@ -13,7 +13,7 @@ body {
   background: rgb(0, 0, 0);
 }
 
-/* Styling for the "Hello Heribio" section on the homepage */
+/* Styling for the "Hello [Insert Name]" section on the homepage */
 .hello-display {
   color: #fff;
   font-family: Poppins, sans-serif;
@@ -69,7 +69,7 @@ body {
   transform: scale(1.05);
 }
 
-/* Navigation bar styling */
+/* Navigation bar (big black bar on top of the site) styling */
 nav {
   margin-right: 20px;
 }
@@ -177,7 +177,7 @@ footer {
   text-align: right;
 }
 
-/* Input box styling */
+/* Input box styling (all the input boxes) */
 input,
 textarea {
   width: 100%;
@@ -349,7 +349,7 @@ textarea {
   background-color: #45a049;
 }
 
-/* Styling for the blue gradient background */
+/* Styling for the blue black gradient background */
 .bubble {
   position: relative;
   /* This makes the .bubble div a positioned ancestor */
