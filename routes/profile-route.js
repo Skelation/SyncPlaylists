@@ -73,10 +73,11 @@ router.post("/post", authCheck, async (req, res) => {
     try {
       const playlistId = req.params.id;
       const playlist = await Post.findById(playlistId);
+      const collaborators = playlist.collaborators;
       if (!playlist) {
         return res.status(404).send("Playlist not found");
       }
-      res.render("playlist", { user: req.user, playlist });
+      res.render("playlist", { user: req.user, playlist, collaborators });
     } catch (err) {
       console.error(err);
       res.status(500).send("Internal Server Error");
@@ -234,9 +235,12 @@ router.post(`/edit/:playlistId/add-collaborator`, authCheck, async (req, res) =>
   try {
     // Find the playlist by ID
     const playlist = await Post.findById(playlistId);
+    const collaboratorProfile = await User.findById(collaboratorId);
+    const collaboratorUsername = collaboratorProfile.name;
+    console.log(collaboratorUsername);
 
     // Add the new song to the playlist
-    playlist.collaborators.push({ id: collaboratorId });
+    playlist.collaborators.push({ id: collaboratorId , name: collaboratorUsername});
 
     // Save the updated playlist
     await playlist.save();

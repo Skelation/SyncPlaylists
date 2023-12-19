@@ -16,6 +16,12 @@
         <li><h3><%= playlist.songs[i].name %> - <%= playlist.songs[i].artist %></h3></li>
       <% } %>
     </ul>
+    <br>
+    <ul class="collaborators-list">
+      <% for(let i=0; i<collaborators.length; i++){ %>
+        <li><h3><%= collaborators[i].name %> - <%= collaborators[i].id %></h3></li>
+      <% } %>
+    </ul>
     <a class="button-like-link" href="/profile/edit/<%= playlist._id %>">Edit Playlist</a>
   </body>
 </div>
